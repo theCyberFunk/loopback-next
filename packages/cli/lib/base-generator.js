@@ -5,6 +5,7 @@
 
 'use strict';
 
+const _ = require('lodash');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const {StatusConflicter, readTextFromStdin} = require('./utils');
@@ -16,6 +17,8 @@ const {checkLoopBackProject} = require('./version-helper');
 const g = require('./globalize');
 
 const supportedPackageManagers = ['npm', 'yarn'];
+
+_.extend(Generator.prototype, require('yeoman-generator/lib/actions/install'));
 
 debug('Is stdin interactive (isTTY)?', process.stdin.isTTY);
 
